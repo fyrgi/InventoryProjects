@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="InventoryProjects.Common/InventoryProjects.Common.csproj" Id="8fd705d1-93c1-44b6-b538-3fb1fc14b28d" />
+  <Project Path="IP1InventoryManagement/IP1InventoryManagement.csproj" />
+  <Project Path="v44MiniProject/v44-Mini-project.csproj" />
+</Solution>

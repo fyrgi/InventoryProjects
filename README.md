@@ -62,3 +62,6 @@ The applications reference this library through project references. Keep the rel
 - Shared functionality belongs in `InventoryProjects.Common` when it is genuinely needed by multiple projects.
 - Application-specific behavior belongs in the relevant application project.
 - Each project has its relevant README.md with more specifications about the project and requirements.
+
+## To Do
+A Launcher.exe that can prompt the question which project does the user want to start.

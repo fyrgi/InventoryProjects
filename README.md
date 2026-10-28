@@ -1,5 +1,4 @@
 # InventoryProjects
-# InventoryProjects
 
 A collection of C# practice projects focused on inventory management and reusable code.
 

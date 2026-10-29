@@ -1,4 +1,17 @@
 ﻿using InventoryProjects.Common;
+using System;
+
+string dataDirectory = Path.Combine(
+    Environment.GetFolderPath(
+        Environment.SpecialFolder.LocalApplicationData),
+    "InventoryProjects",
+    "v44MiniProject");
+
+
+FileHandler fileHandler = new FileHandler(dataDirectory, "products.json");
+fileHandler.EnsureFileExists();
+Console.WriteLine($"Data file exists.");
+Console.ReadLine();
 
 List<MenuOption> mainMenuOptions = new()
 {
@@ -8,6 +21,8 @@ List<MenuOption> mainMenuOptions = new()
     new MenuOption("Calculate Total Price", CalculateTotalPrice),
     new MenuOption("Statistics", ShowStatistics)
 };
+
+Console.ReadLine();
 
 Menu mainMenu = new Menu("Inventory Management", mainMenuOptions);
 

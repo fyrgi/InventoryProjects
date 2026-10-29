@@ -1,25 +1,21 @@
 ﻿using InventoryProjects.Common;
 using System;
 
-string dataDirectory = Path.Combine(
-    Environment.GetFolderPath(
-        Environment.SpecialFolder.LocalApplicationData),
-    "InventoryProjects",
-    "v44MiniProject");
+// Get the path from the app-context to ensure that file is created in the project folder.
+string programFolder = Path.GetFullPath(
+    Path.Combine(AppContext.BaseDirectory, @"..\..\.."));
 
-
-FileHandler fileHandler = new FileHandler(dataDirectory, "products.json");
+FileHandler fileHandler = new FileHandler(programFolder, "products.json");
 fileHandler.EnsureFileExists();
-Console.WriteLine($"Data file exists.");
-Console.ReadLine();
 
 List<MenuOption> mainMenuOptions = new()
 {
     new MenuOption("Add Product", ProductManager.Add),
-    new MenuOption("View Products", ViewProducts),
-    new MenuOption("Search Products", SearchProducts),
-    new MenuOption("Calculate Total Price", CalculateTotalPrice),
-    new MenuOption("Statistics", ShowStatistics)
+    new MenuOption("View Products", ProductManager.View),
+    new MenuOption("Search Products", ProductManager.Search),
+    new MenuOption("Edit Product", ProductManager.Edit),
+    new MenuOption("Remove Product", ProductManager.Remove),
+    new MenuOption("Statistics", ProductManager.Statistics),
 };
 
 Console.ReadLine();

@@ -12,10 +12,11 @@ namespace InventoryProjects.Common
         public static void Add()
         {
             Console.WriteLine("adding product from class Product Manager");
+            Console.ReadLine();
         }
 
 
-        void viewProducts()
+        public static void View()
         {
             try
             {
@@ -48,10 +49,43 @@ namespace InventoryProjects.Common
             {
                 UI.showMessage($"Error reading from file: {ex.Message}" , "error");
             }
+            Console.ReadLine();
         }
         // Search by ID, name or category
+        public static void Search()
+        {
+            Console.WriteLine("searching");
+            Console.ReadLine();
+        }
+        //
+        public static void Edit()
+        {
+            Console.WriteLine("editing");
+            Console.ReadLine();
+        }
+
+        public static void Remove()
+        {
+            Console.WriteLine("deleting...");
+            Console.ReadLine();
+        }
+        public static void Sort()
+        {
+            Console.WriteLine("sorting...");
+            Console.ReadLine();
+        }
         // Sort by price
-        // Calculate totals
-        // statistics
+
+        public static void Calculate()
+        {
+            Console.WriteLine("Calculating Total...");
+            Console.ReadLine();
+        }
+        
+        public static void Statistics()
+        {
+            Console.WriteLine("statistics...");
+            Console.ReadLine();
+        }
     }
 }

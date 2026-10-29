@@ -1,11 +1,47 @@
 ﻿using InventoryProjects.Common;
 
-Console.WriteLine("Product list manager - checkpoint 2");
+List<MenuOption> mainMenuOptions = new()
+{
+    new MenuOption("Add Product", ProductManager.Add),
+    new MenuOption("View Products", ViewProducts),
+    new MenuOption("Search Products", SearchProducts),
+    new MenuOption("Calculate Total Price", CalculateTotalPrice),
+    new MenuOption("Statistics", ShowStatistics)
+};
 
-List<Product> productList = new List<Product>();
+Menu mainMenu = new Menu("Inventory Management", mainMenuOptions);
 
-// Test the connection with the Product class in Common
-var product = new Product("test", 12.12);
-Console.WriteLine(product.Id + " is the product id");
-var product2 = new Product("test 2", 22);
-Console.WriteLine(product2.Id + " is the product id");
+mainMenu.Show();
+
+void ViewProducts()
+{
+    Console.WriteLine("View Products selected.");
+    Pause();
+}
+
+void SearchProducts()
+{
+    Console.WriteLine("Search Products selected.");
+    Pause();
+}
+
+void CalculateTotalPrice()
+{
+    Console.WriteLine("Calculate Total Price selected.");
+    Pause();
+}
+
+void ShowStatistics()
+{
+    Console.WriteLine("Statistics selected.");
+    Pause();
+}
+
+void Pause()
+{
+    Console.WriteLine();
+    Console.WriteLine("Press Enter to return to the menu...");
+    Console.ReadLine();
+}
+
+Console.WriteLine();

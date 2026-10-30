@@ -8,81 +8,72 @@ namespace InventoryProjects.Common
 {
     public class ProductManager
     {
+        private List<Product> _products = new();
+        // Refference to the eventual list of objects. 
+        public IReadOnlyList<Product> Products => _products;
+        // If list with objects is provided the manager will use it. Otherwise it won't
+        public ProductManager(List<Product>? products = null)
+        {
+            _products = products ?? new List<Product>();
+        }
         // Add, view, update and delete products
-        public static void Add()
+        public void Add(Product product)
         {
-            Console.WriteLine("adding product from class Product Manager");
-            Console.ReadLine();
+            _products.Add(product);
         }
-
-
-        public static void View()
+        
+        public void View()
         {
-            try
+            if (_products.Count == 0)
             {
-                string programFolder = AppContext.BaseDirectory;
-                string filePath = Path.Combine(programFolder, "products.txt");
-                if (File.Exists(filePath))
-                {
-                    string[] products = File.ReadAllLines(filePath);
-                    //sortDisplayProducts(products);
-                    if (products.Length > 0)
-                    {
-                        Console.WriteLine("\n==== Product List: ====");
-                        foreach (string product in products)
-                        {
-                            Console.WriteLine(product);
-                        }
-                        Console.WriteLine("==== End of List ====\n");
-                    }
-                    else
-                    {
-                        UI.showMessage("No products found.\n", "warning");
-                    }
-                }
-                else
-                {
-                    UI.showMessage("The product file is not found!\nContat System Administrator!", "error");
-                }
+                UI.ShowMessage("No products found.", "warning");
+                return;
             }
-            catch (Exception ex)
+            
+            Console.WriteLine("\n==== Product List ====");
+            
+            foreach (Product product in _products)
             {
-                UI.showMessage($"Error reading from file: {ex.Message}" , "error");
+                Console.WriteLine(
+                    $"{product.Id} | {product.Name} | " +
+                    $"{product.Category} | {product.Price}");
             }
-            Console.ReadLine();
+            
+            Console.WriteLine("==== End of List ====\n");
         }
+        
         // Search by ID, name or category
-        public static void Search()
+        public void Search()
         {
             Console.WriteLine("searching");
             Console.ReadLine();
         }
         //
-        public static void Edit()
+        public void Edit()
         {
             Console.WriteLine("editing");
             Console.ReadLine();
         }
 
-        public static void Remove()
+        public void Remove()
         {
             Console.WriteLine("deleting...");
             Console.ReadLine();
         }
-        public static void Sort()
+        public void Sort()
         {
             Console.WriteLine("sorting...");
             Console.ReadLine();
         }
         // Sort by price
 
-        public static void Calculate()
+        public void Calculate()
         {
             Console.WriteLine("Calculating Total...");
             Console.ReadLine();
         }
         
-        public static void Statistics()
+        public void Statistics()
         {
             Console.WriteLine("statistics...");
             Console.ReadLine();

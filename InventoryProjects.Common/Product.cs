@@ -20,12 +20,12 @@ public class Product
         Price = price;
     }
 
-    public Product(string name, double price, string category)
+    public Product(string name, string category, double price)
     {
         Id = ++_currentId;
         Name = name;
-        Price = price;
         CategoryManual = category;
+        Price = price;
     }
     public int Id { get; set; }
     public string Name { get; set; }

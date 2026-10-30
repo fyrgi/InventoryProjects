@@ -26,7 +26,7 @@ public class Menu
             Console.WriteLine($"{_options.Count + 1}. Exit");
 
             Console.Write("\nChoose an option: ");
-            string? input = Console.ReadLine().Trim().ToLower();
+            string? input = Console.ReadLine();
             
             if(input == "q" || input == "0")
                 return;
@@ -39,7 +39,7 @@ public class Menu
             }
             else
             {
-                UI.showMessage("Invalid choice. Choose a menu option or 'q' for exit", "error");
+                UI.ShowMessage("Invalid choice. Choose a menu option or 'q' for exit", "error");
                 Console.WriteLine();
             }
         }

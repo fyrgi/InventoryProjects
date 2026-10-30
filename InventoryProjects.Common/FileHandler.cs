@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Intrinsics.Arm;
 using System.Text;
+using System.Text.Json;
 
 namespace InventoryProjects.Common
 {
@@ -29,7 +30,7 @@ namespace InventoryProjects.Common
                         File.WriteAllText(_fullFilePath, "[]");
                     } catch (Exception ex)
                     {
-                        UI.showMessage(ex.ToString(), "error");
+                        UI.ShowMessage(ex.ToString(), "error");
                     }
                 }
             } else
@@ -58,7 +59,7 @@ namespace InventoryProjects.Common
             }
             catch (Exception ex)
             {
-                UI.showMessage(ex.ToString(), "error");
+                UI.ShowMessage(ex.ToString(), "error");
             }
         }
     }

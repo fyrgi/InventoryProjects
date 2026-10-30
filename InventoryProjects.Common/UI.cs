@@ -6,7 +6,7 @@ namespace InventoryProjects.Common
 {
     public static class UI
     {
-        public static void showMessage(string message, string messageType)
+        public static void ShowMessage(string message, string messageType)
         {
             switch (messageType)
             {
@@ -32,6 +32,7 @@ namespace InventoryProjects.Common
 
             Console.WriteLine(message);
             Console.ResetColor();
+            Console.WriteLine();
         }
     }
 }

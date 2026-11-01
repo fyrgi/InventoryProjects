@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1,
+    "Name": "TEST 1",
+    "CategoryManual": "Test 1111",
+    "Price": 1
+  },
+  {
+    "Id": 2,
+    "Name": "test 2",
+    "CategoryManual": "test 2",
+    "Price": 2
+  },
+  {
+    "Id": 3,
+    "Name": "test 3",
+    "CategoryManual": "test 3",
+    "Price": 3
+  },
+  {
+    "Id": 1,
+    "Name": "test 1",
+    "CategoryManual": "test 1",
+    "Price": 1
+  },
+  {
+    "Id": 2,
+    "Name": "test 2",
+    "CategoryManual": "test 2",
+    "Price": 2
+  },
+  {
+    "Id": 3,
+    "Name": "test 3",
+    "CategoryManual": "test 3",
+    "Price": 3
+  },
+  {
+    "Id": 4,
+    "Name": "test 4",
+    "CategoryManual": "test 4",
+    "Price": 1203
+  }
+]

@@ -8,7 +8,7 @@ namespace v44MiniProject
     {
         public int Id { get; set; }
         public string Name { get; set; } = "";
-        public string Category { get; set; } = "";
+        public string CategoryManual { get; set; } = "";
         public double Price { get; set; }
     }
 }

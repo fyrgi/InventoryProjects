@@ -9,7 +9,8 @@ namespace InventoryProjects.Common
     public class ProductManager
     {
         private List<Product> _products = new();
-        // Refference to the eventual list of objects. 
+
+        // Refference to the eventual list of objects.
         public IReadOnlyList<Product> Products => _products;
 
         // If list with objects is provided the manager will use it. Otherwise it won't
@@ -33,12 +34,18 @@ namespace InventoryProjects.Common
             
             Console.WriteLine("\n==== Product List ====");
             
+            // use a linq to get the total price of all products in the list
+            double totalPrice = _products.Sum(p => p.Price);
+
             foreach (Product product in _products)
             {
                 Console.WriteLine(
-                    $"{product.Id} | {product.Name} | " +
-                    $"{product.Category} | {product.Price}");
+                    $"{product.Id.ToString().PadLeft(4).PadRight(6)}| {product.Name.PadRight(15)} | " +
+                    $"{product.CategoryManual.PadRight(10)} | {product.Price.ToString().PadLeft(6)}");
             }
+            
+            Console.WriteLine($"{" ".PadRight(26)}"+
+                    $"{"Total:".PadLeft(10)} | {totalPrice.ToString().PadLeft(6)}");
             
             Console.WriteLine("==== End of List ====\n");
         }

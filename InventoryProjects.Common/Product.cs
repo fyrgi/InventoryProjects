@@ -1,15 +1,5 @@
 ﻿namespace InventoryProjects.Common;
-public enum ProductCategory
-{
-    Stationery = 1,
-    OfficeSupplies = 2,
-    SchoolSupplies = 3,
-    TechAccessories = 4,
-    WritingTools = 5,
-    Filing = 6,
-    Packaging = 7,
-    Miscellaneous = 8
-}
+
 public class Product
 {
     private static int _currentId;
@@ -20,13 +10,14 @@ public class Product
         Price = price;
     }
 
-    public Product(string name, string category, double price)
+    public Product(int id, string name, string category, double price)
     {
-        Id = ++_currentId;
+        Id = id;
         Name = name;
         CategoryManual = category;
         Price = price;
     }
+
     public int Id { get; set; }
     public string Name { get; set; }
     public double Price { get; set; }
@@ -34,4 +25,17 @@ public class Product
     public string CategoryManual { get; set; }
     public int Quantity { get; set; }
     
+}
+
+
+public enum ProductCategory
+{
+    Stationery = 1,
+    OfficeSupplies = 2,
+    SchoolSupplies = 3,
+    TechAccessories = 4,
+    WritingTools = 5,
+    Filing = 6,
+    Packaging = 7,
+    Miscellaneous = 8
 }

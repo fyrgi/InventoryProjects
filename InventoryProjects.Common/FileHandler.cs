@@ -49,18 +49,12 @@ namespace InventoryProjects.Common
         
         public void WriteAllText(string content)
         {
+            //Console.WriteLine("WriteAllText " + content);
             EnsureFileExists();
-            try
             {
-                using (StreamWriter sw = new StreamWriter(_fullFilePath, true))
-                {
-                    sw.WriteLine(_fullFilePath, content);
-                }
-            }
-            catch (Exception ex)
-            {
-                UI.ShowMessage(ex.ToString(), "error");
-            }
+                EnsureFileExists();
+                File.WriteAllText(_fullFilePath, content);
+            }          
         }
     }
 }

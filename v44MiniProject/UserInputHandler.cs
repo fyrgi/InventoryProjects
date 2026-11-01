@@ -7,7 +7,7 @@ namespace v44MiniProject
 {
     public class UserInputHandler
     {
-        public static Product? GetProductInput()
+        public static Product? GetProductInput(int maxId)
         {
             string? name = ReadRequiredText("Product name");
             if (name == null)
@@ -21,7 +21,7 @@ namespace v44MiniProject
             if (price == null)
                 return null;
 
-            return new Product(name, category, price.Value);
+            return new Product(maxId + 1, name, category, price.Value);
         }
 
         private static string? ReadRequiredText(string prompt)
@@ -31,7 +31,7 @@ namespace v44MiniProject
                 Console.Write($"{prompt} (q to cancel): ");
                 string? input = Console.ReadLine();
 
-                if (input?.Trim().Equals("q",
+                if (input?.Trim().ToLower().Equals("q",
                     StringComparison.OrdinalIgnoreCase) == true)
                     return null;
 

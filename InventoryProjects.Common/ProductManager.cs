@@ -11,6 +11,7 @@ namespace InventoryProjects.Common
         private List<Product> _products = new();
         // Refference to the eventual list of objects. 
         public IReadOnlyList<Product> Products => _products;
+
         // If list with objects is provided the manager will use it. Otherwise it won't
         public ProductManager(List<Product>? products = null)
         {

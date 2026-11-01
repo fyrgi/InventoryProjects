@@ -10,6 +10,15 @@ string programFolder = Path.GetFullPath(
 FileHandler _fileHandler = new FileHandler(programFolder, "products.json");
 _fileHandler.EnsureFileExists();
 
+string content = _fileHandler.ReadAllText();
+
+List<ProductJson> savedProducts = 
+    JsonSerializer.Deserialize<List<ProductJson>>(content) 
+    ?? 
+    new List<ProductJson>();
+
+var maxId = savedProducts.Count > 0 ? savedProducts.Max(p => p.Id) : 0;
+
 ProductManager productManager = new ProductManager();
 
 List<MenuOption> mainMenuOptions = new()
@@ -22,23 +31,36 @@ List<MenuOption> mainMenuOptions = new()
     new MenuOption("Statistics", productManager.Statistics),
 };
 
-Console.ReadLine();
-
 Menu mainMenu = new Menu("Inventory Management", mainMenuOptions);
 
 mainMenu.Show();
 
 void AddProduct()
 {
-    Product? product = UserInputHandler.GetProductInput();
+    Product? product = UserInputHandler.GetProductInput(maxId);
+    string json = string.Empty;
 
     if (product is not null)
     {
         productManager.Add(product);
+        maxId++;
+        Console.WriteLine("max id is now " + maxId);
+        List<ProductJson> newProduct = productManager.Products.Select(p => new ProductJson
+        {
+            Id = p.Id,
+            Name = p.Name,
+            Category = p.CategoryManual,
+            Price = p.Price
+        }).ToList();
 
-        string json = JsonSerializer.Serialize(
-            productManager.Products,
-            new JsonSerializerOptions { WriteIndented = true });
+        List<ProductJson> productsToSave = savedProducts.Concat(newProduct).ToList<ProductJson>();
+
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true
+        };
+
+        json = JsonSerializer.Serialize(productsToSave, options);
 
         _fileHandler.WriteAllText(json);
 
@@ -49,37 +71,6 @@ void AddProduct()
         return;
     }
     AddProduct();
-}
-
-void ViewProducts()
-{
-    Console.WriteLine("View Products selected.");
-    Pause();
-}
-
-void SearchProducts()
-{
-    Console.WriteLine("Search Products selected.");
-    Pause();
-}
-
-void CalculateTotalPrice()
-{
-    Console.WriteLine("Calculate Total Price selected.");
-    Pause();
-}
-
-void ShowStatistics()
-{
-    Console.WriteLine("Statistics selected.");
-    Pause();
-}
-
-void Pause()
-{
-    Console.WriteLine();
-    Console.WriteLine("Press Enter to return to the menu...");
-    Console.ReadLine();
 }
 
 Console.WriteLine();
